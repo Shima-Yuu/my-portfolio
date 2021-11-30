@@ -1,0 +1,20 @@
+//- PC
+ul.gnav
+  +gnav_item_pc("Top","top")(class="no_stick_ current")
+  +gnav_item_pc("About","about")
+  +gnav_item_pc("Skills","skills")
+  +gnav_item_pc("Works","works")
+  +gnav_item_pc("Contact","contact")
+
+//- SP
+.hamburger-menu#hamburgerMenu_toggle
+  .hamburger-menu__inner
+    - for (let i = 0; i< 3; i++)
+      .hamburger-menu__line
+.hamburger-menu__cont
+  nav.hamburger-menu__cont__nav
+    +gnav_item_sp("Top","top2")(class="current")
+    +gnav_item_sp("About","about2")
+    +gnav_item_sp("Skills","skills2")
+    +gnav_item_sp("Works","works2")
+    +gnav_item_sp("Contact","contact2")

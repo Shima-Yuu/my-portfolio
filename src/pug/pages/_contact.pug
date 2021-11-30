@@ -1,0 +1,24 @@
+section.contact
+  .contact__cont
+    #typing_txt.contact__cont__thank
+      | Thank you
+      br
+      | for viewing!
+    .contact__cont__head メッセージがありましたら、以下のフォームよりお送りください。
+    form(action="" method="post" class="contact__cont__form" id="contactForm")
+      .contact__cont__form__item
+        | お名前&nbsp;
+        span.required-mark *
+        input(type="text" name="name" class="name")
+        span.error_required
+      .contact__cont__form__item
+        | メールアドレス&nbsp;
+        span.required-mark *
+        input(type="text" name="email" class="email")
+        span.error_email_required
+        span.error_email
+      .contact__cont__form__item
+        | メッセージ
+        textarea(name="message")
+      .contact__cont__form__item.contact__cont__form__submit
+        input(type="submit" value="送信")

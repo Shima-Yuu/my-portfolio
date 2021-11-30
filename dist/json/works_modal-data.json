@@ -1,0 +1,146 @@
+{
+  "website": [
+    {
+      "name": "Webagency",
+      "link": "http://shimazakiyuku.xxxx.jp/works/webagency/",
+      "path": "images/works_website_webagency.png",
+      "time": "3時間",
+      "skills": "HTML,CSS",
+      "description": "こちらはマークアップ言語を学んで初めて作成したものになります。企業のコーポレートサイトを意識して作成しました。初めの方なので不自然ではないデザインを意識しました。"
+    },
+    {
+      "name": "Space Dreame",
+      "link": "http://shimazakiyuku.xxxx.jp/works/spacedreame/",
+      "path": "images/works_website_spacedream.png",
+      "time": "1日",
+      "skills": "HTML,CSS,Javascript,Jquery,Bootstrap",
+      "description": "こちらはアトミックデザインが特徴的であるBootStrapとcssのコーディングスピードを上げるScssを使用して作成しました。こだわりとして背景にトレンドでもあるパーティクルデザインを導入した点です。"
+    },
+    {
+      "name": "Portfolio(old)",
+      "link": "http://ss293271.stars.ne.jp/",
+      "path": "images/works_website_portfolio.png",
+      "time": "1カ月",
+      "skills": "HTML,CSS,Javascript,jQuery,Wordpress,PHP",
+      "description": "こちらは訓練校時代の卒業制作で制作したポートフォリオになります。フォーム部分をWordpressで作成し、ローディングアニメーションに少しこだわってみました。"
+    },
+    {
+      "name": "y.s Fashion",
+      "link": "http://ss293271.stars.ne.jp/wp/",
+      "path": "images/works_website_fashion.png",
+      "time": "2日",
+      "skills": "Wordpress",
+      "description": "こちらは、ファッションに関する情報を発信するブログサイトをモチーフに作成しました。Wordpressのプラグインを利用してレイアウトを決め、固定ページを量産して作成しました。"
+    },
+    {
+      "name": "Cafe Hachi",
+      "link": "http://shimazakiyuku.xxxx.jp/works/cafe-hachi/",
+      "path": "images/works_website_hachi-cafe.png",
+      "time": "1日",
+      "skills": "HTML,CSS,Javascript,Jquery",
+      "description": "こちらは私の行きつけのカフェのWebサイトになります。slick.jsを用いてカルーセルスライダーを実装し、girdレイアウトを用いてメニュー部分をコーディングしました。"
+    },
+    {
+      "name": "donguri",
+      "link": "http://shimazakiyuku.xxxx.jp/works/donguri/",
+      "path": "images/works_website_donguri.png",
+      "time": "4時間",
+      "skills": "HTML,CSS,Javascript",
+      "description": "こちらで初めてJavascriptを使用しました。スムーススクロールや追従するヘッダーを実装しました。こちらからカラーを意識するようになり、ベース、メインカラーを同系色でアクセントカラーに補色になるカラーを採用し、目立たせました。"
+    }
+  ],
+  "banner": [
+    {
+      "name": "Fashion",
+      "path": "images/works_banner_fashion.png",
+      "time": "2時間",
+      "skills": "Photoshop",
+      "description": "こちらは、ファッションブランドの冬のセールのバナーを意識して作成しました。モノトーン調でスタイリッシュに締め、強調部分だけ赤文字で目立たせてます。"
+    },
+    {
+      "name": "Picture",
+      "path": "images/works__banner_picture.png",
+      "time": "1時間",
+      "skills": "Photoshop",
+      "description": "こちらは写真の代行サービスのバナーをイメージしたものになります。こだわりとしては、画像を加工で水墨画風にしてより惹きつけるようなデザインを意識した点です。"
+    },
+    {
+      "name": "Theater",
+      "path": "images/works_banner_theater.png",
+      "skills": "Photoshop",
+      "description": "こちらは映画の広告用のバナーを意識して作成しました。画像でタイトルを連想させて余計な要素を入れずにテキストのみでインパクトを出して目を引くようなデザインにしました。"
+    }
+  ],
+  "logo": [
+    {
+      "name": "Labo",
+      "path": "images/works_logo_labo.png",
+      "time": "2時間",
+      "skills": "Illustrator",
+      "description": "大学の研究所のHPをイメージして作成いたしました。ペンツールの直線や曲線でシルエットや内部の液体を作り、試験管を表現しました。"
+    },
+    {
+      "name": "Yamanote",
+      "path": "images/works_logo_yamanote.png",
+      "time": "3時間",
+      "skills": "Illustrator",
+      "description": "こちらは現在開発中の山手線のおすすめのスポットを紹介するサイトのロゴになります。デザインを親しみやすいものに意識していたので、ロゴはポップな感じにしました。"
+    },
+    {
+      "name": "Fashion",
+      "path": "images/works_logo_fashion.png",
+      "time": "1時間",
+      "skills": "Illustrator",
+      "description": "こちらはファッションブランドのロゴをイメージして作成しました。こだわりとしては、背景のダーツの的のような部分で楕円形ツールを使い表現しました。堅実的なファッションやファストブランドのロゴを意識しています。"
+    },
+    {
+      "name": "Tech",
+      "path": "images/works_logo_tech.png",
+      "time": "30分",
+      "skills": "designevo",
+      "description": "こちらはロゴ作成のアシストをするdesignevoというサービスを利用して作成したものになります。テクノロジー系の企業のロゴを意識して作成したので、クリアなグリーンを使い、最先端さやクールさを表現しています。フォントは安心感のあるゴシック体です。"
+    }
+  ],
+  "lp": [
+    {
+      "name": "Marriage Agency",
+      "link": "http://shimazakiyuku.xxxx.jp/works/lp/afi",
+      "path": "images/works_website_lp_afi.png",
+      "time": "3日",
+      "skills": "HTML,CSS,Javascript,Jquery",
+      "description": "こちらは結婚相談所の会員獲得のためのLPになります。流入元の9割のデバイスがスマホのためモバイルファーストで実装しております。モバイル前提のためスワイプ機能を可能とするSwiper.jsを使用しております。"
+    },
+    {
+      "name": "Marriage Agency2",
+      "link": "http://shimazakiyuku.xxxx.jp/works/lp/app",
+      "path": "images/works_website_lp_app.png",
+      "time": "5日",
+      "skills": "HTML,CSS,Javascript,Jquery,Gulp,Scss",
+      "description": "こちらは結婚相談所の会員獲得のためのLPになります。流入元の9割のデバイスがスマホのためモバイルファーストで実装しております。ユーザーの属性ごとにコンテンツを切り替える機能を実装いたしました。また、Swiper.jsを使用し、カルーセルスライダー&スワイプ機能を実装しております。"
+    },
+    {
+      "name": "Marriage Agency3",
+      "link": "http://shimazakiyuku.xxxx.jp/works/lp/google",
+      "path": "images/works_website_lp_google.png",
+      "time": "4日",
+      "skills": "HTML,CSS,Javascript,jQuery",
+      "description": "こちらは結婚相談所の会員獲得のためのLPになります。流入元の9割のデバイスがスマホのためモバイルファーストで実装しております。顕在層向けに配信したLPで少しエレガントなデザインを意識したため、ローディングアニメーションを実装いたしました。"
+    },
+    {
+      "name": "Marriage Agency4",
+      "link": "http://shimazakiyuku.xxxx.jp/works/lp/short",
+      "path": "images/works_website_lp_short.png",
+      "time": "2日",
+      "skills": "HTML,CSS,Javascript,jQuery,Scss,Pug,Gulp",
+      "description": "こちらは結婚相談所の会員獲得のためのLPになります。流入元の9割のデバイスがスマホのためモバイルファーストで実装しております。工数が短い案件だったのでスピードを意識して制作したLPになります。Pug,Scssを使用して効率よくマークアップを行っため、2日程度で完成いたしました。"
+    },
+    {
+      "name": "Marriage Agency6",
+      "link": "http://shimazakiyuku.xxxx.jp/works/lp/marriage-history",
+      "path": "images/works_website_lp_marriage-history.png",
+      "time": "4日",
+      "skills": "HTML,CSS,Javascript,jQuery,Scss,Pug,Gulp",
+      "description": "こちらは結婚相談所の会員獲得のためのLPになります。流入元の9割のデバイスがスマホのためモバイルファーストで実装しております。こちらは婚歴者向けに制作したLPになります。追従アニメーションやスワイプで切り替え可能なタブ切り替えなど動きのあるアニメーションを実装いたしました。"
+    }
+  ]
+}

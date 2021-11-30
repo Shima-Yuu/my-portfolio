@@ -1,0 +1,37 @@
+-const title = 'My Portfolio｜Yuku Shimazaki';
+-const description = '私、島崎宥玖のポートフォリオになります。2年ほど前にこの業界に入り、今ではフロントエンドエンジニアをやらせていただいております。WEBサイト制作やWEBアプリケーション開発をメインに、既存システムのCMS化、SEO対策、マーケ等も担当させていただきました。';
+-const current_version = "20211118";
+
+meta(charset='utf-8')
+meta(http-equiv='X-UA-Compatible' content='IE=edge')
+meta(name='viewport' content='width=device-width, initial-scale=1.0')
+meta(name='format-detection' content='telephone=no,address=no,email=no')
+meta(name="robots" content="noindex, nofollow")
+title=title
+meta(name='description' content=description)
+meta(name='keywords' content="ポートフォリオ,portfolio,フロントエンドエンジニア,web制作")
+meta(property="og:url" content="http://shimazakiyuku.xxxx.jp/")
+meta(property="og:type" content="website")
+meta(property="og:title" content=title)
+meta(property="og:description" content=description)
+meta(property="og:site_name" content=title)
+meta(property="og:image" content="./images/ogp.png")
+link(rel="icon" type="image/x-icon" href="images/sitelogo.png")
+
+//- Font
+-const font_Inconsolata_Condensed = "fonts/Inconsolata_Condensed-Light.ttf?" + current_version;
+link(rel="preload" as="font" href=font_Inconsolata_Condensed type="font/truetype" crossorigin)
+
+//- Style
+-const css_index = "css/index.min.css?" + current_version;
+link(rel="preload" href=css_index as="style" onload="this.onload=null;this.rel='stylesheet'")
+
+//- Script
+-const js_particle = "js/particle-module.min.js?" + current_version;
+-const js_jquery = "js/jquery-3.5.1.min.js?" + current_version;
+-const js_module = "js/module.min.js?" + current_version;
+-const js_main = "js/main.min.js?" + current_version;
+script(src=js_particle)
+script(src=js_jquery defer)
+script(src=js_module defer)
+script(src=js_main defer)

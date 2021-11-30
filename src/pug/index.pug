@@ -1,0 +1,39 @@
+//- 汎用モジュールインプット
+include ./utillity/_alt
+include ./utillity/_mixin
+
+doctype html
+html(lang="ja")
+  head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#")
+    include ./component/_head
+  body
+    //- ローディングアニメション&グローバルナビゲーション
+    include ./component/_loading
+    //- マウスストーカー
+    #stalker
+
+    //- 背景のパーティクルアニメーション
+    .particle
+      .particle__caption
+      canvas.particle__canvas#canvas-container
+
+    //- メインコンテンツ
+    main
+      //- TOP
+      include ./pages/_top
+
+      //- About
+      include ./pages/_about
+
+      //- Skills
+      include ./pages/_skills
+
+      //- Works
+      include ./pages/_works
+
+      //- Contact
+      include ./pages/_contact
+
+    //- モーダルコンテンツ
+    include ./component/_skills_modal
+    include ./component/_works_modal

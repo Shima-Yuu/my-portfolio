@@ -1,0 +1,28 @@
+//- _gnav.pug | item on PC
+mixin gnav_item_pc(txt,id)
+  li.gnav__item
+    a.gnav__item__wrapper(class!=attributes.class href="javascript:void(0);" id=id)
+      span.gnav__item__wrapper__txt=txt
+
+//- _gnav.pug | item on SP
+mixin gnav_item_sp(txt,id)
+  li.hamburger-menu__cont__item
+    a.hamburger-menu__cont__item-inner(class!=attributes.class href="javascript:void(0);" id=id)=txt
+
+//- _skills.pug｜ skills item
+mixin skills_item(score,img_path,img_alt)
+  .skillbar(class!=attributes.class data-percent=score)
+    .skillbar-title
+      img(src=img_path alt=img_alt title=img_alt)
+    .skillbar-bar
+    .skillbar-percent.skillbar-percent__once
+
+//- _skills_modal.pug｜ skills modal item
+mixin skills_modal-item(item_path,item_name)
+  .skills_modal-item: img(src=item_path alt=item_name title=item_name class!=attributes.class)
+
+//- _works_modal.pug｜ skills modal item
+mixin works_modal(summary_txt,summary_class)
+  .works-modal__txt
+    span=summary_txt
+    span(class=summary_class)

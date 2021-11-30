@@ -1,0 +1,1898 @@
+/***************************************
+**
+** font
+**
+***************************************/
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('../fonts/Inconsolata_Condensed-Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+/***************************************
+**
+** Reset
+**
+***************************************/
+@import 'base/reset';
+
+/***************************************
+**
+** Module
+**
+***************************************/
+@import 'plugins/onepage-scroll';
+@import 'plugins/flipster';
+@import 'plugins/animate.min';
+
+/***************************************
+**
+** default
+**
+***************************************/
+$topColor: #da0463;
+$aboutColor: #63da04;
+$aboutBgColor: #04da7b;
+$skillsColor: #0463da;
+$worksColor: #7b04da;
+$contactColor: #c0c0c0;
+$basecolor: #000;
+$breakpoints: (
+  'sp': 'screen and (max-width: 599px)',
+  'tab': 'screen and (max-width: 1024px)',
+);
+
+@mixin mq($breakpoint: tab) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin max-screen($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6em;
+  line-height: 1.6;
+  background-color: #000;
+  position: relative;
+  font-family: 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif;
+
+  &.is-fixed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+section {
+  @include mq() {
+    margin-top: 100px;
+  }
+  @include mq(sp) {
+    margin-top: 60px;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+main {
+  margin-left: 200px;
+  position: relative;
+
+  @include max-screen(1200px) {
+    margin-left: 170px;
+  }
+}
+
+main.sp {
+  margin-left: 0;
+  position: relative;
+}
+
+main.onepage-wrapper section.section {
+  width: calc(100% - 200px);
+  @include max-screen(1200px) {
+    width: calc(100% - 170px);
+  }
+  @include mq() {
+    width: 100%;
+  }
+}
+
+/***************************************
+**
+** Loading Animation
+**
+***************************************/
+$sitelogo-size: 150px;
+$sitelogo-size2: 140px;
+
+@mixin sitelogo-size($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin centering {
+  top: calc(50% - 75px);
+  left: calc(50% - 75px);
+}
+
+@mixin ff-yumincho {
+  font-family: YuMincho, 'Yu Mincho';
+}
+
+.loading {
+  background-color: $basecolor;
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 2;
+
+  &.js-border {
+    border-right: solid 3px #fff;
+    transition: 4s;
+  }
+
+  &.js-border2 {
+    border-bottom: solid 1px #fff;
+    transition: 4s;
+  }
+
+  &__logo {
+    position: absolute;
+    @include centering;
+
+    img {
+      @include sitelogo-size($sitelogo-size);
+
+      &.animation {
+        animation: flash 0.5s linear infinite;
+      }
+
+      @include max-screen(1200px) {
+        @include sitelogo-size($sitelogo-size2);
+      }
+    }
+  }
+
+  &__slidebg {
+    content: '';
+    display: block;
+    background-color: $basecolor;
+    z-index: 3;
+    position: absolute;
+    top: calc(50% - 80px);
+    left: calc(50% - 75px);
+    @include sitelogo-size($sitelogo-size + 10px);
+
+    @include max-screen(1200px) {
+      @include sitelogo-size($sitelogo-size2 + 10px);
+    }
+  }
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/***************************************
+**
+** gnav
+**
+***************************************/
+@mixin current-color($nav-color) {
+  color: $nav-color;
+  border-bottom: solid 10px $nav-color;
+}
+@mixin current-color2($nav-color) {
+  font-weight: bold;
+  line-height: 1;
+  color: $nav-color;
+  border-bottom: solid 5px $nav-color;
+  padding: 10px 0 5px;
+}
+
+// PC
+.gnav {
+  color: white;
+  font-size: 2rem;
+  margin: 240px 15px 0;
+
+  @include max-screen(1200px) {
+    font-size: 1.6rem;
+  }
+
+  &__item {
+    display: none;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 40px;
+
+    &__wrapper {
+      display: inline-block;
+      @include ff-yumincho;
+
+      &__txt {
+        display: block;
+        margin-bottom: -15px;
+      }
+    }
+  }
+
+  .current {
+    font-weight: bold;
+    @include current-color($topColor);
+
+    &.-about {
+      @include current-color($aboutColor);
+    }
+
+    &.-skills {
+      @include current-color($skillsColor);
+    }
+
+    &.-works {
+      @include current-color($worksColor);
+    }
+
+    &.-contact {
+      @include current-color($contactColor);
+    }
+  }
+}
+
+// SP
+.hamburger-menu {
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 32px;
+  right: 25px;
+  height: 32px;
+  cursor: pointer;
+  @include mq(sp) {
+    top: 18px;
+    right: 15px;
+  }
+
+  &__inner {
+    position: relative;
+    width: 36px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    left: 0;
+    display: block;
+    background: #fff;
+    position: absolute;
+    transition: transform 0.6s ease-in-out, top 0.5s ease;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 14px;
+      @include mq(sp) {
+        top: 10px;
+      }
+    }
+
+    &:nth-child(3) {
+      top: 28px;
+      @include mq(sp) {
+        top: 20px;
+      }
+    }
+  }
+
+  &__cont {
+    display: none;
+    background: #000;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 990;
+    text-align: center;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    opacity: 0;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+
+    &__nav {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &__item {
+      opacity: 0;
+      transform: translateX(200px);
+      transition: transform 0.6s ease, opacity 0.2s ease;
+
+      &:nth-child(2) {
+        transition-delay: 0.15s;
+      }
+
+      &:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      &:nth-child(4) {
+        transition-delay: 0.45s;
+      }
+
+      &:nth-child(5) {
+        transition-delay: 0.6s;
+      }
+
+      &:nth-child(6) {
+        transition-delay: 0.75s;
+      }
+
+      &:nth-child(7) {
+        transition-delay: 0.9s;
+      }
+
+      &-inner {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 0;
+        transition: color 0.6s ease;
+
+        &:hover {
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+.open {
+  overflow: hidden;
+
+  .hamburger-menu__cont {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+
+    &__item {
+      opacity: 1;
+      transform: translateX(0);
+      transition: transform 1s ease, opacity 0.9s ease;
+    }
+  }
+  .hamburger-menu__line {
+    background: #fff;
+
+    &:nth-child(1) {
+      top: 15px;
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      top: 15px;
+      width: 0;
+      left: 50%;
+    }
+
+    &:nth-child(3) {
+      top: 15px;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.viewing-page-1 {
+  .hamburger-menu__cont {
+    .current {
+      @include current-color2($topColor);
+    }
+  }
+}
+.viewing-page-2 {
+  .hamburger-menu__cont {
+    .current {
+      @include current-color2($aboutColor);
+    }
+  }
+}
+.viewing-page-3 {
+  .hamburger-menu__cont {
+    .current {
+      @include current-color2($skillsColor);
+    }
+  }
+}
+.viewing-page-4 {
+  .hamburger-menu__cont {
+    .current {
+      @include current-color2($worksColor);
+    }
+  }
+}
+.viewing-page-5 {
+  .hamburger-menu__cont {
+    .current {
+      @include current-color2($contactColor);
+    }
+  }
+}
+
+/***************************************
+**
+** mouse stalker
+**
+***************************************/
+#stalker {
+  display: none;
+  pointer-events: none;
+  position: fixed;
+  top: -40px;
+  left: -40px;
+  width: 80px;
+  height: 80px;
+  background: white;
+  opacity: 0.5;
+  border-radius: 50%;
+  transition: transform 0.2s, top, 0.5s, left 0.5s, width 0.5s, height 0.5s, background-color 0.5s;
+  transition-timing-function: ease-out;
+  z-index: 999;
+
+  &.hov_ {
+    top: -24px;
+    left: -24px;
+    width: 48px;
+    height: 48px;
+    transition: 0.5s;
+    background: $topColor;
+
+    &.-about {
+      background: $aboutColor;
+    }
+
+    &.-skills {
+      background: $skillsColor;
+    }
+
+    &.-works {
+      background: $worksColor;
+    }
+
+    &.-contact {
+      background: $contactColor;
+    }
+  }
+}
+
+/***************************************
+**
+** Scroll down
+**
+***************************************/
+.scroll-down {
+  display: none;
+  position: absolute;
+  left: 60px;
+  bottom: 40px;
+  z-index: 1;
+  padding: 10px 10px 110px;
+  overflow: hidden;
+  color: #fff;
+  font-size: 1.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
+  @include ff-yumincho;
+  @include mq() {
+    left: 10px;
+    bottom: 150px;
+  }
+  @include mq(sp) {
+    font-size: 1.4rem;
+    bottom: 15%;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    height: 100px;
+    background: #fff;
+    animation: sdl 1.5s cubic-bezier(1, 0, 0, 1) infinite;
+  }
+}
+
+@keyframes sdl {
+  0% {
+    transform: scale(1, 0);
+    transform-origin: 0 0;
+  }
+
+  50% {
+    transform: scale(1, 1);
+    transform-origin: 0 0;
+  }
+
+  50.1% {
+    transform: scale(1, 1);
+    transform-origin: 0 100%;
+  }
+
+  100% {
+    transform: scale(1, 0);
+    transform-origin: 0 100%;
+  }
+}
+
+/***************************************
+**
+** Particle Animation
+**
+***************************************/
+.particle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+
+  &__caption {
+    margin: auto;
+    width: 700px;
+    max-width: 100%;
+    color: white;
+    background: rgba(255, 255, 255, 0.25);
+    text-align: center;
+  }
+
+  &__canvas {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background: black;
+  }
+}
+
+#js-particle {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  background: black;
+}
+
+#js-particle canvas {
+  vertical-align: middle;
+}
+
+/***************************************
+**
+** Modal
+**
+***************************************/
+// Skill Modal
+$color-shadow: #BABECC;
+$color-white: #FFF;
+
+#skills_modal-trigger {
+  opacity: 0;
+}
+.close-animatedModal {
+  display: block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #bababa;
+  background-color: #fcfcfc;
+  border-radius: 50%;
+  margin: 30px auto 50px;
+  box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+  transition: all 0.2s ease-in-out;   
+  cursor: pointer;
+  &:hover {
+    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 22px;
+    background: #bababa;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+    transition: all 0.5s;
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: all 0.5s;
+  }
+  &:hover {
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+}
+.skills_modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: #f1f3f6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+
+  &-cont {
+    max-width: 1024px;
+    margin: 0 auto;
+    background: #f1f3f6;
+    box-shadow: 
+    inset 0 0 5px rgba(55, 84, 170, 0), 
+    inset 0 0 10px rgba(255, 255, 255, 0), 
+    5px 5px 9px rgba(55, 84, 170, 0.15), 
+    -1px -1px 11px rgb(220, 220, 220), 
+    inset 0px 0px 2px rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 10px;
+  }
+  &-item {
+    cursor: pointer;
+    opacity: 0;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    background-color: #fcfcfc;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    margin-bottom: -60px;
+    box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+    transition: all 0.2s ease-in-out;   
+    @include max-screen(900px) {
+      width: 120px;
+      height: 120px;
+      line-height: 120px;
+    }
+    @include max-screen(768px) {
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+    }
+    @include mq(sp) {
+      width: 60px;
+      height: 60px;
+      line-height: 60px;
+    }
+
+    &:hover {
+      box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    &_bootstrap {
+      width: 50%;
+    }
+    &_docker {
+      width: 90%;
+    }
+    &_git {
+      width: 70%;
+    }
+    &_node {
+      width: 70%;
+    }
+    &_salesforce {
+      width: 80%;
+    }
+    &_microcms {
+      width: 90%;
+    }
+    &_wordpress {
+      width: 60%;
+    }
+    &_sitecore {
+      width: 90%;
+    }
+    &_redmine {
+      width: 90%;
+    }
+    &_trello {
+      width: 60%;
+    }
+    &_electron {
+      width: 60%;
+    }
+    &_adobe {
+      width: 90%;
+    }
+    &_php {
+      width: 75%;
+    }
+    &_python {
+      width: 60%;
+    }
+    &_office {
+      width: 80%;
+    }
+
+    &_wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+// Works Modal
+.works-modal {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background-color: $worksColor;
+
+  &__close {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 6;
+    cursor: pointer;
+    user-select: none;
+    @include mq() {
+      width: 20px;
+      height: 20px;
+    }
+    @include mq(sp) {
+      width: 15px;
+      height: 15px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      display: inline-block;
+      background: #fff;
+      position: absolute;
+      top: 25px;
+      left: 5px;
+      @include mq() {
+        top: 15px;
+      }
+      @include mq(sp) {
+        top: 11px;
+        left: 4px;
+      }
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+
+    &-outer {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      background-color: #000;
+      border-radius: 50%;
+      padding: 5px;
+      box-shadow: 0 30px 15px rgba(0, 0, 0, 0.3);
+      @include mq() {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        right: 10px;
+      }
+      @include mq(sp) {
+        width: 33px;
+        height: 33px;
+      }
+    }
+  }
+
+  &__head {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    color: #000;
+    margin: 0 auto;
+    padding: 10px 30px;
+    display: inline-block;
+    background-color: #fff;
+    @include mq() {
+      font-size: 1.8rem;
+    }
+    @include mq(sp) {
+      font-size: 1.6rem;
+      padding: 5px 30px;
+    }
+
+    &-outer {
+      text-align: center;
+      margin-bottom: 20px;
+      @include mq(sp) {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  &__img {
+    max-width: 500px;
+    width: 100%;
+    margin: 50px auto 20px;
+    position: relative;
+    @include mq() {
+      margin: 60px auto 20px;
+    }
+    @include mq(sp) {
+      max-width: 260px;
+      margin: 30px auto 20px;
+    }
+
+    &-link:hover {
+      opacity: 0.9;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 10px;
+      left: 25px;
+      z-index: -1;
+      width: 450px;
+      height: 10px;
+      border-radius: 200px / 5px;
+      box-shadow: 0 40px 25px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  &__summary {
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 40px 25px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 600px;
+    width: 100%;
+    margin: 60px auto 0;
+    @include mq(sp) {
+      margin-top: 40px;
+      padding: 15px;
+    }
+  }
+
+  &__link {
+    font-size: 1.6rem;
+    display: flex;
+    color: #fff;
+    margin-bottom: 10px;
+    @include mq() {
+      font-size: 1.4rem;
+    }
+
+    &-left {
+      padding-right: 5px;
+    }
+
+    &-right {
+      color: #c7b2d6;
+    }
+
+    &-href {
+      position: relative;
+      padding-bottom: 2px;
+
+      &::after {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #c7b2d6;
+        transform: scale(0, 1);
+        transform-origin: left top;
+        transition: transform 0.3s;
+      }
+    }
+  }
+
+  &__txt {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 10px;
+
+    span {
+      display: inline-block;
+
+      &:first-child {
+        padding-right: 5px;
+      }
+    }
+  }
+}
+
+.works-modal__link-href:hover {
+  &::after {
+    transform: scale(1, 1);
+  }
+}
+
+/***************************************
+**
+** Top
+**
+***************************************/
+.top {
+  &__cont {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: $topColor;
+    width: 75%;
+    height: 65%;
+    opacity: 0.2;
+    @include mq() {
+      width: 100%;
+      height: 80%;
+      right: initial;
+      left: 50%;
+      top: 44%;
+      transform: translate(-50%, -50%);
+    }
+    @include mq(sp) {
+      font-size: 5.8rem;
+      height: 70%;
+    }
+
+    &__head {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 13%;
+      font-size: 7vw;
+      color: white;
+      font-weight: bold;
+      @include ff-yumincho;
+
+      @include max-screen(1200px) {
+        font-size: 6.6vw;
+      }
+      @include mq() {
+        font-size: 5.5rem;
+        left: 8%;
+        top: 30%;
+      }
+    }
+  }
+}
+
+/***************************************
+**
+** About
+**
+***************************************/
+.about {
+  &__cont {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    left: -100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: #2b2b2b;
+    box-shadow: 10px 10px 10px 0px;
+    width: 100%;
+    max-width: 1200px;
+    height: 550px;
+    box-shadow: 0 1.9px 2.5px rgba(0, 0, 0, 0.057), 0 5px 6.1px rgba(0, 0, 0, 0.076), 0 10.1px 11.4px rgba(0, 0, 0, 0.086), 0 19.2px 19.8px rgba(0, 0, 0, 0.092), 0 38.4px 34.8px rgba(0, 0, 0, 0.1), 0 101px 74px rgba(0, 0, 0, 0.13);
+    transition: all 2s;
+
+    &.js-fadein {
+      left: 0;
+
+      @include mq() {
+        left: 50%;
+      }
+    }
+
+    &.js-color {
+      background-color: #1f9c3a;
+    }
+
+    @include max-screen(1400px) {
+      top: 30%;
+      height: 450px;
+      max-width: initial;
+      display: block;
+    }
+    @include mq() {
+      width: 100%;
+      max-width: 800px;
+      height: 440px;
+      top: 30%;
+      left: 50%;
+      opacity: 0.9;
+      transform: translate(-50%, -50%);
+    }
+
+    &-left {
+      position: relative;
+      padding-right: 30px;
+      @include mq() {
+        padding-right: 0;
+      }
+    }
+    &-right {
+      position: relative;
+      height: 550px;
+      width: 100%;
+
+      @include max-screen(1400px) {
+        width: 400px;
+        height: 400px;
+        margin: 30px auto 0;
+      }
+      @include mq() {
+        width: 350px;
+        height: 350px;
+      }
+      @include mq(sp) {
+        width: 300px;
+        height: 300px;
+      }
+
+      img {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 550px;
+
+        @include max-screen(1400px) {
+          height: 400px;
+        }
+        @include mq() {
+          height: 300px;
+        }
+
+        &.about__cont-right__color {
+          display: none;
+          z-index: 2;
+        }
+      }
+    }
+
+    &__bg-txt {
+      writing-mode: vertical-lr;
+      text-orientation: sideways;
+      overflow: hidden;
+      font-size: 16rem;
+      color: #0d0d0d;
+      height: 550px;
+      line-height: 1.1;
+      position: absolute;
+      font-weight: bold;
+      left: 0;
+      transition: all 2s;
+      @include max-screen(1400px) {
+        height: 440px;
+        top: -30px;
+      }
+      @include mq {
+        height: 400px;
+      }
+      @include mq(sp) {
+        font-size: 10rem;
+      }
+
+      &__web {
+        display: block;
+        text-align: center;
+        letter-spacing: 30px;
+      }
+
+      &__design {
+        display: block;
+        letter-spacing: 15px;
+        @include max-screen(1400px) {
+          letter-spacing: 17px;
+        }
+      }
+
+      &.js-color {
+        color: #218438;
+      }
+    }
+
+    &__txt {
+      z-index: 3;
+      position: relative;
+      color: #fff;
+      font-weight: bold;
+      line-height: 1.8;
+      font-size: 2rem;
+      @include mq() {
+        font-size: 1.6rem;
+      }
+      @include mq(sp) {
+        font-size: 1.3rem;
+      }
+
+      &-wrapper {
+        padding-left: 40px;
+        width: 580px;
+        @include max-screen(1400px) {
+          width: 100%;
+        }
+        @include mq() {
+          width: 100%;
+          padding: 0 15px 0;
+        }
+      }
+
+      &.head {
+        font-weight: bold;
+        font-size: 3.2rem;
+        line-height: 1.6;
+        margin: 30px 0 20px;
+        @include ff-yumincho;
+        @include max-screen(1400px) {
+          text-align: center;
+        }
+        @include mq() {
+          font-size: 3rem;
+          padding-top: 0px;
+        }
+        @include mq(sp) {
+          font-size: 2.2rem;
+          margin: 25px 0 15px;
+        }
+      }
+    }
+  }
+}
+
+/***************************************
+**
+** Skills
+**
+***************************************/
+$htmlColor: #d35400;
+$pugColor: #f5d5a7;
+$cssColor: #123cd4;
+$sassColor: #c06d97;
+$javascriptColor: #f4de50;
+$gulpColor: #c3544d;
+$jqueryColor: #316096;
+$vueColor: #64b587;
+$nuxtColor: #58c192;
+$wordpressColor: #454342;
+
+.skills {
+  &__cont {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: $skillsColor;
+    width: 100%;
+    height: 75%;
+    opacity: 0.7;
+    padding-top: 20px;
+    @include mq() {
+      height: 100%;
+      opacity: 0.8;
+    }
+
+    &-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-flex {
+      display: flex;
+      justify-content: space-between;
+      width: 95%;
+      margin: 0 auto 15px;
+      @include mq() {
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+
+    &__more {
+      display: flex;
+      align-items: center;
+      margin-top: 40px;
+      @include mq(sp) {
+        margin-top: 20px;
+      }
+
+      &-outer {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        @include mq() {
+          position: initial;
+        }
+      }
+
+      &__line {
+        width: 80%;
+        position: relative;
+        margin-right: 15px;
+        @include mq() {
+          width: 60%;
+        }
+
+        &.js-line_trigger {
+          &::before {
+            width: 100%;
+          }
+        }
+
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: '';
+          display: block;
+          width: 0;
+          height: 2px;
+          background: #fff;
+          transition: 1s;
+        }
+      }
+
+      &__txt {
+        @include ff-yumincho;
+        font-weight: bold;
+        font-size: 3.5rem;
+        color: #fff;
+
+        @include max-screen(1200px) {
+          font-size: 2.5rem;
+        }
+        @include mq() {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+$skillbarHeight: 70px;
+$skillbarHeight-tab: 50px;
+$skillbarHeight-sp: 40px;
+.skillbar {
+  position: relative;
+  display: inline-block;
+  margin: 15px 0;
+  background: #eee;
+  height: $skillbarHeight;
+  width: 45%;
+  border-radius: 3px;
+  @include mq() {
+    width: 90%;
+    height: $skillbarHeight-tab;
+    margin: 10px auto;
+    text-align: left;
+  }
+  @include mq(sp) {
+    height: $skillbarHeight-sp;
+  }
+
+  &-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px 20px;
+  }
+
+  &-bar {
+    height: $skillbarHeight;
+    width: 0px;
+    border-radius: 3px;
+    display: inline-block;
+    @include mq() {
+      height: $skillbarHeight-tab;
+    }
+    @include mq(sp) {
+      height: $skillbarHeight-sp;
+    }
+  }
+
+  &-percent {
+    &__once {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      font-size: 1.3rem;
+      line-height: $skillbarHeight;
+      color: $skillsColor;
+      text-shadow: 0 0 10px $skillsColor, 0 0 15px $skillsColor;
+      @include mq() {
+        line-height: $skillbarHeight-tab;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+      }
+    }
+
+    &.-fix {
+      font-size: 4rem;
+    }
+
+    &.-fix2 {
+      font-size: 3rem;
+    }
+
+    &.good-score {
+      font-weight: 900;
+    }
+  }
+
+  &.-html {
+    .skillbar-bar {
+      background: $htmlColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+      }
+      @include mq(sp) {
+        width: 59px;
+        height: $skillbarHeight-sp;
+      }
+    }
+  }
+
+  &.-pug {
+    .skillbar-bar {
+      background: $pugColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      padding: 5px 10px;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+        padding: 5px 12px;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        width: 59px;
+      }
+    }
+  }
+
+  &.-css {
+    .skillbar-bar {
+      background: $cssColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        width: 59px;
+      }
+    }
+  }
+
+  &.-sass {
+    .skillbar-bar {
+      background: $sassColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      padding: 12px 10px;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+        padding: 12px 13px;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        padding: 9px 13px;
+        width: 59px;
+      }
+    }
+  }
+
+  &.-javascript {
+    .skillbar-bar {
+      background: $javascriptColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      padding: 10px 15px;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+        padding: 10px 17px;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        width: 59px;
+      }
+    }
+  }
+
+  &.-jquery {
+    .skillbar-bar {
+      background: $jqueryColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      padding: 20px 3px;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+        padding: 9px 3px;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        width: 59px;
+        padding: 4px 3px;
+      }
+    }
+  }
+
+  &.-vue {
+    .skillbar-bar {
+      background: $vueColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      padding: 10px 7px;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+        padding: 10px 12px;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        width: 59px;
+        padding: 8px 12px;
+      }
+    }
+  }
+
+  &.-nuxt {
+    .skillbar-bar {
+      background: $nuxtColor;
+    }
+
+    .skillbar-title {
+      width: 80px;
+      height: $skillbarHeight;
+      padding: 9px 5px;
+      @include mq() {
+        width: 65px;
+        height: $skillbarHeight-tab;
+        padding: 9px 10px;
+      }
+      @include mq(sp) {
+        height: $skillbarHeight-sp;
+        width: 59px;
+        padding: 6px 10px;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes shine {
+  0% {
+    transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -120%, 0);
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  100% {
+    transform: rotate3d(0, 0, 1, -25deg) translate3d(0, 150%, 0);
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/***************************************
+**
+** Works
+**
+***************************************/
+.works {
+  &__cont {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-color: $worksColor;
+    width: 100%;
+    height: 90%;
+    opacity: 0.7;
+    padding-top: 20px;
+    @include mq() {
+      height: 100%;
+      opacity: 0.8;
+    }
+
+    &__circle {
+      user-select: none;
+      margin: 0 auto 20px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: #fff;
+      text-align: center;
+      line-height: 160px;
+      color: #000;
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-shadow: 0 15px 10px rgba(0, 0, 0, 0.5);
+      @include ff-yumincho();
+      @include mq() {
+        width: 120px;
+        height: 120px;
+        line-height: 120px;
+        font-size: 2.5rem;
+      }
+      @include mq(sp) {
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        font-size: 1.8rem;
+      }
+    }
+
+    &__tab {
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto 30px;
+      text-align: center;
+      @include mq(sp) {
+        margin: 0 auto 15px;
+        width: 95%;
+      }
+
+      &__item {
+        cursor: pointer;
+        background-color: #000;
+        color: #fff;
+        padding: 18.5px;
+        font-size: 1.6rem;
+        width: 32%;
+        user-select: none;
+        &:not(:last-of-type) {
+          margin-right: 30px;
+        }
+        @include mq() {
+          font-size: 1.4rem;
+          padding: 10px 20px;
+        }
+        @include mq(sp) {
+          font-size: 1.3rem;
+          padding: 6px 20px;
+          &:not(:last-of-type) {
+            margin-right: 10px;
+          }
+        }
+
+        &.current {
+          background-color: #fff;
+          padding: 15px;
+          color: #000;
+          font-weight: bold;
+          font-size: 2rem;
+          @include mq() {
+            font-size: 1.8rem;
+            padding: 7px 15px;
+          }
+          @include mq(sp) {
+            font-size: 1.5rem;
+            padding: 4px 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Coverflow Tab
+.flipster {
+  max-width: 1024px;
+  margin: auto;
+  padding-bottom: 15px;
+
+  &__nav {
+    @include mq(sp) {
+      margin-bottom: 20px;
+    }
+    &__link {
+      color: #fff;
+      @include mq(sp) {
+        padding: 5px 1em;
+      }
+
+      &::after {
+        background: #fff;
+      }
+
+      &:hover {
+        color: #000;
+      }
+    }
+
+    &__item--current {
+      .flipster__nav__link {
+        color: #000;
+        font-weight: bold;
+
+        &::after {
+          background: #fff;
+        }
+      }
+    }
+  }
+
+  &__button {
+    svg {
+      color: #fff;
+      width: 3em;
+    }
+  }
+
+  &__item {
+    img {
+      box-shadow: 0 12px 10px -6px rgba(0, 0, 0, 0.3);
+      width: 430px;
+      @include mq(sp) {
+        width: 300px;
+      }
+    }
+  }
+}
+
+.flip-items {
+  display: none;
+}
+
+.hide {
+  display: none !important;
+}
+
+/***************************************
+**
+** Contact
+**
+***************************************/
+$contactFontColor: rgb(51, 51, 51);
+
+.contact {
+  &__cont {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    background-color: $contactColor;
+    width: 90%;
+    height: 80%;
+    opacity: 0.8;
+    @include mq() {
+      opacity: 0.9;
+      height: 100%;
+      width: 100%;
+    }
+
+    &__thank {
+      display: inline-block;
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 6vw;
+      font-family: 'Inconsolata';
+      color: $contactFontColor;
+      @include max-screen(1300px) {
+        font-size: 5vw;
+      }
+      @include mq() {
+        top: initial;
+        bottom: 12%;
+        right: 5%;
+        font-size: 3.7rem;
+      }
+      @include mq(sp) {
+        bottom: 5%;
+      }
+
+      .t-container {
+        &.border {
+          border-bottom: solid 5px $contactFontColor;
+          transition: 2s;
+          @include mq() {
+            border-bottom: solid 2px $contactFontColor;
+          }
+        }
+      }
+    }
+
+    &__head {
+      color: $contactFontColor;
+      font-size: 1.8rem;
+      padding: 30px 0 20px;
+      font-weight: bold;
+      text-align: center;
+      @include ff-yumincho();
+      @include mq() {
+        font-size: 1.6rem;
+        padding: 30px 10px 20px;
+      }
+      @include mq(sp) {
+        font-size: 1.4rem;
+        padding: 15px 10px;
+      }
+    }
+
+    &__form {
+      margin-left: 40px;
+      color: $contactFontColor;
+      @include mq() {
+        margin: 0 10px;
+      }
+
+      &__item {
+        margin-bottom: 30px;
+        max-width: 500px;
+        font-size: 1.8rem;
+        @include mq() {
+          font-size: 1.4rem;
+          margin-bottom: 20px;
+        }
+        @include mq(sp) {
+          margin-bottom: 10px;
+        }
+
+        input,
+        textarea {
+          padding: 10px 15px;
+          background-color: #fff;
+          color: $contactFontColor;
+          border-radius: 10px;
+          margin-top: 10px;
+          display: block;
+          max-width: 500px;
+          width: 100%;
+          box-shadow: 0px 0px 8px 3px #ccc inset;
+          font-size: 1.6rem;
+          @include mq(sp) {
+            padding: 5px 15px;
+          }
+        }
+
+        textarea {
+          height: 200px;
+          @include mq(sp) {
+            height: 150px;
+          }
+        }
+
+        .required-mark {
+          color: $topColor;
+        }
+      }
+
+      &__submit.contact__cont__form__item {
+        max-width: 120px;
+        text-align: center;
+
+        input {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+.error_required,
+.error_email_required,
+.error_email {
+  color: $topColor;
+  font-size: 1.4rem;
+}
