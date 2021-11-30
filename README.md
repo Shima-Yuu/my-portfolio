@@ -3,6 +3,11 @@
 ## URL
 <http://shimazakiyuku.xxxx.jp/>
 
+## Directory
+root/  
+&ensp;├ dist・・・Public file  
+&ensp;├ gulpfile.js・・・Gulp  
+&ensp;├ src・・・Source Code
 ## Skills
 * Gulp
 * Pug
@@ -16,5 +21,5 @@
 * skill.bars.js ([Doc](https://github.com/umarwebdeveloper/jquery-css-skills-bar))
 * Flipster.js ([Doc](https://github.com/drien/jquery-flipster))
 
-### Version
+## Version
 2021/11/30 → Release
