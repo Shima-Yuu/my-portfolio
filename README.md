@@ -17,4 +17,4 @@
 * Flipster.js ([Doc](https://github.com/drien/jquery-flipster))
 
 ### Version
-2021/11/24 → Release
+2021/11/30 → Release
