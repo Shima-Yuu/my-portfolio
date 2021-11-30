@@ -7,7 +7,7 @@
 root/  
 &ensp;├ dist・・・Public file  
 &ensp;├ gulpfile.js・・・Gulp  
-&ensp;├ src・・・Source Code
+&ensp;└  src・・・Source Code
 ## Skills
 * Gulp
 * Pug
